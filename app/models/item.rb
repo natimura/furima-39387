@@ -11,9 +11,9 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :delivery_day
 
-  validates :name, :explain, :price, :image, presence: true
+  validates :name, :explain, :price, presence: true
 
-  validates :unless image.attached?
+  validates :image, presence: {message:'が１枚以上必要です'}
 
   validates :category_id, numericality: { other_than: 1 , message: "can't be blank"}
   validates :condition_id, numericality: { other_than: 1 , message: "can't be blank"}
