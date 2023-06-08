@@ -11,9 +11,12 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :delivery_day
 
-  validates :name, :explain, :price, presence: true
+  validates :image, :name, :explain, presence: true
 
-  validates :image, presence: {message:'が１枚以上必要です'}
+  validates :price, presence: true, format: 
+  { with: /\A[0-9]+\z/, message: '半角数字で入力してください' },
+  numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, 
+  message: '￥300から￥9,999,999の範囲で入力してください' }
 
   validates :category_id, numericality: { other_than: 1 , message: "can't be blank"}
   validates :condition_id, numericality: { other_than: 1 , message: "can't be blank"}
