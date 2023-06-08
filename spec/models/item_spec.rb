@@ -41,19 +41,19 @@ RSpec.describe Item, type: :model do
       it 'priceに半角数字以外が含まれている場合出品できない' do
         @item.price ="１０００"
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price ￥300から￥9,999,999の範囲で入力してください')
+        expect(@item.errors.full_messages).to include('Price ￥300から￥9,999,999の範囲で半角数字で入力してください')
       end
 
       it 'priceが299以下では出品できない' do
         @item.price=299
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price ￥300から￥9,999,999の範囲で入力してください')
+        expect(@item.errors.full_messages).to include('Price ￥300から￥9,999,999の範囲で半角数字で入力してください')
       end
 
       it 'priceが10,000,000以上では出品できない' do
         @item.price=10000000
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price ￥300から￥9,999,999の範囲で入力してください')
+        expect(@item.errors.full_messages).to include('Price ￥300から￥9,999,999の範囲で半角数字で入力してください')
       end
 
       it 'category_idが1では出品できない' do
