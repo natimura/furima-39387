@@ -5,15 +5,15 @@ class OrderShipping
   :municipalities, :address, :building, :telephone, :token
 
   with_options presence: true do
-    #validates :user_id
-    #validates :item_id
+    validates :user_id
+    validates :item_id
     validates :post_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/,
     message: "は半角で○○○-○○○○と入力して下さい"}
     validates :prefecture_id
     validates :municipalities
     validates :address
     validates :telephone, format: {with: /\A[0-9]{10,11}\z/,
-    message: "は-を入れず、半角数字で入力してください"}
+    message: "は-を入れず半角数字で入力してください"}
     validates :token
   end
 

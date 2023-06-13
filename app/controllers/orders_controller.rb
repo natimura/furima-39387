@@ -5,7 +5,6 @@ class OrdersController < ApplicationController
 
   def index
     @order_shipping=OrderShipping.new
-    @orders=Order.all
   end
 
   def create
@@ -39,6 +38,7 @@ class OrdersController < ApplicationController
   end
 
   def move_to_index
+    @orders=Order.all
     if current_user.id == @item.user_id || @orders.exists?(item_id: @item.id)
       redirect_to root_path
     end
