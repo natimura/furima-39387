@@ -39,7 +39,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'priceに半角数字以外が含まれている場合出品できない' do
-        @item.price ="１０００"
+        @item.price="１０００"
         @item.valid?
         expect(@item.errors.full_messages).to include('Price ￥300から￥9,999,999の範囲で半角数字で入力してください')
       end
